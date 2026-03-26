@@ -18,7 +18,7 @@
 #include <iostream>
 #include <cstring>
 #include <cstdio>
-#include "../comun/protocolo.h"
+#include "Protocolo.h"
 
 #define ARCHIVO_ORDENES   "ordenes.dat"
 #define ARCHIVO_PRODUCTOS "productos.dat"

@@ -8,6 +8,9 @@
 #ifndef PROTOCOLO_H
 #define PROTOCOLO_H
 
+#include <winsock2.h>
+#pragma comment(lib, "ws2_32.lib")
+
  
 #define TAM_PRODUCTO 64
 
