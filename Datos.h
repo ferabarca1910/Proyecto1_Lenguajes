@@ -190,6 +190,29 @@ inline int cargar_mesas() {
 
 // --------------CRUD ORDENES------------------
 
+//agregar orden a lista enlazada
+inline NodoOrden* agregar_orden(NodoOrden* cabeza, int id, int numero_mesa, const char* producto, int cantidad) {
+    NodoOrden* nuevo = new NodoOrden();
+    nuevo->id = id;
+    nuevo->numero_mesa = numero_mesa;
+    strncpy(nuevo->producto, producto, TAM_PRODUCTO - 1);
+    nuevo->producto[TAM_PRODUCTO - 1] = '\0';
+    nuevo->cantidad = cantidad;
+    nuevo->estado = ESTADO_PENDIENTE;
+    nuevo->siguiente = nullptr;
+
+    if (cabeza == nullptr) {
+        return nuevo;
+    }
+
+    NodoOrden* actual = cabeza;
+    while (actual->siguiente != nullptr) {
+        actual = actual->siguiente;
+    }
+    actual->siguiente = nuevo;
+    return cabeza;
+}
+
 //-------------------- Crear ornde---------------------
 inline int crear_orden(int numero_mesa, const char* producto, int cantidad) {
     int num_mesas = cargar_mesas();
@@ -314,6 +337,27 @@ inline void listar_ordenes_pendientes() {
 }
 
 //------------------------CRUD productos ---------------
+
+//agregar producto a lista enlazada
+inline NodoProducto* agregar_producto(NodoProducto* cabeza, int id, const char* nombre, float precio) {
+    NodoProducto* nuevo = new NodoProducto();
+    nuevo->id = id;
+    strncpy(nuevo->nombre, nombre, TAM_PRODUCTO - 1);
+    nuevo->nombre[TAM_PRODUCTO - 1] = '\0';
+    nuevo->precio = precio;
+    nuevo->siguiente = nullptr;
+
+    if (cabeza == nullptr) {
+        return nuevo;
+    }
+
+    NodoProducto* actual = cabeza;
+    while (actual->siguiente != nullptr) {
+        actual = actual->siguiente;
+    }
+    actual->siguiente = nuevo;
+    return cabeza;
+}
 
 // ---------crear_producto--------------
 
